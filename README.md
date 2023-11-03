@@ -1,13 +1,17 @@
 # Planos de Redes de Telecomunicaciones
 
-Esta aplicación desarrollada en Expo esta pensada para los técnicos que trabajan con las redes de las empresas de telecomunicaciones. Permite ver los planos de las redes y tiene la opción de subir cualquier reforma que se realice para luego asentarlo en los planos utilizando la cámara y localización del dispositivo.
+Esta aplicación desarrollada en Expo esta pensada para los técnicos que trabajan en las redes de las empresas de telecomunicaciones. Permite ver los planos de las redes y tiene la opción de subir cualquier reforma que se realice para luego asentarlo en los planos utilizando la cámara y localización del dispositivo.
 Los datos son almacenados en Firebase realtime database, garantizando que la información que ven los usuarios siempre este actualizada.
 ## Instalación
 
 -Descargar el ZIP desde github.
+
 -Descomprimirlo y abrirlo en VSC o el editor de código de tu preferencia.
+
 -Instalar las dependencias con el comando "npm install".
+
 -Ejecutarlo con el comando "npx expo start".
+
 -Escanear el código QR desde la app Expo en tu smartphone Iphone o Android.
 ## Autor
 
