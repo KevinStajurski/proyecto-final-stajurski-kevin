@@ -4,7 +4,11 @@ import { useGetLastReformsQuery } from '../../../../services/zonesApi'
 import styles from './LastReforms.style'
 
 const LastReforms = () => {
-    const { data, isLoading } = useGetLastReformsQuery()
+    const { data, isLoading, refetch } = useGetLastReformsQuery()
+
+    const update = () => {
+        refetch()
+    }
 
     return (
         <View style={styles.container}>
@@ -24,6 +28,7 @@ const LastReforms = () => {
                             </View>}
                     />
             }
+            <TouchableOpacity onPress={update}><Text style={styles.button}>Actualizar</Text></TouchableOpacity>
         </View>
     )
 }
