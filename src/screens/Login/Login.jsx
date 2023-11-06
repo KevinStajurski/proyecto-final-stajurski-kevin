@@ -35,6 +35,7 @@ const Login = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <MyModal modalVisible={modalVisible} setModalVisible={setModalVisible} text={errorText} buttonText={'OK'} />
+            <Text style={styles.text}>Planos de Redes de Telecomunicaciones</Text>
             <TextInput placeholder='E-mail' style={styles.input} value={email} onChangeText={setEmail} />
             <TextInput placeholder='Clave' style={styles.input} value={password} onChangeText={setPassword} />
             <Pressable onPress={onSubmit}>

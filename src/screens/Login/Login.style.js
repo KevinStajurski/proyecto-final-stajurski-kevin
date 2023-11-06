@@ -19,5 +19,9 @@ export default styles = StyleSheet.create({
         borderRadius: 20,
         width: 190,
         textAlign: 'center'
+    },
+    text: {
+        fontSize: 25,
+        marginBottom: 50
     }
 })

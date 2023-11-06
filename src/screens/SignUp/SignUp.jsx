@@ -22,7 +22,7 @@ const SignUp = ({ navigation }) => {
 
 
     const onSubmit = () => {
-        if (password!=confirmPassword) {
+        if (password != confirmPassword) {
             setModalVisible(true)
             setErrorText('La confirmación de clave no coincide')
             return
@@ -49,6 +49,7 @@ const SignUp = ({ navigation }) => {
         <View>
             <MyModal modalVisible={modalVisible} setModalVisible={setModalVisible} text={errorText} buttonText={'OK'} />
             <View style={styles.container}>
+                <Text style={styles.text}>Planos de Redes de Telecomunicaciones</Text>
                 <TextInput style={styles.input} placeholder='Nombre' value={names} onChangeText={setNames} />
                 <TextInput style={styles.input} placeholder='Apellido' value={lastName} onChangeText={setLastName} />
                 <TextInput style={styles.input} placeholder='Número de técnico' value={technicianNumber} onChangeText={setTechnicianNumber} />
