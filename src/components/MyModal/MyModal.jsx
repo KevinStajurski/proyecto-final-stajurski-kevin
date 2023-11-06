@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
+import React from 'react';
+import { Alert, Modal, Text, Pressable, View } from 'react-native';
 import styles from './MyModal.style'
 
 const MyModal = ({ text, modalVisible, setModalVisible, buttonText }) => {
@@ -27,5 +27,3 @@ const MyModal = ({ text, modalVisible, setModalVisible, buttonText }) => {
 };
 
 export default MyModal
-
-//centeredView modalView modalText button buttonClose textStyle

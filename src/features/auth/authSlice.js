@@ -4,7 +4,6 @@ const initialState = {
     user: null,
     token: null,
     localId: null
-    //imageCamera: null
 }
 
 export const authSlice = createSlice({
@@ -20,13 +19,7 @@ export const authSlice = createSlice({
         },
         clearUser: () => {
             return {user: null, token: null, localId: null}
-        },
-        // setCameraImage: (state, action) => {
-        //     return {
-        //         ...state,
-        //         imageCamera: action.payload
-        //     }
-        // }
+        }
     }
 })
 
