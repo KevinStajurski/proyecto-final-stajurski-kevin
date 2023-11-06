@@ -87,10 +87,11 @@ const NewReform = () => {
             <MyModal text={errorText} modalVisible={modalVisible} setModalVisible={setModalVisible} buttonText={'OK'} />
             <Text style={styles.text}>Agregar reforma / ampliación</Text>
             <TextInput style={styles.textInput} placeholder='Descripción' value={reformDescription} onChangeText={value => setReformDescription(value)} />
-            {reformImage && <Image source={{ uri: reformImage }} style={styles.image} />}
-            <Pressable onPress={pickImage}>
-                <Text style={styles.button}>Agregar foto</Text>
-            </Pressable>
+            {reformImage ?
+                <Image source={{ uri: reformImage }} style={styles.image} /> :
+                <Pressable onPress={pickImage}>
+                    <Text style={styles.button}>Agregar foto</Text>
+                </Pressable>}
             <Pressable onPress={getLocation}>
                 <Text style={styles.button}>Obtener coordenadas</Text>
             </Pressable>
