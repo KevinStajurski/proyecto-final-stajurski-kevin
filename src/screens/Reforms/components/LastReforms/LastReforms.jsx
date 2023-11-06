@@ -21,6 +21,7 @@ const LastReforms = () => {
                         renderItem={({ item }) =>
                             <View style={styles.itemContainer}>
                                 <Text>Realizada por: {item.user}</Text>
+                                <Text>Fecha: {item.date}</Text>
                                 <Text>Descripcion: {item.reformDescription}</Text>
                                 <Text>Latitud: {item.location.latitude}</Text>
                                 <Text>Longitud: {item.location.longitude}</Text>

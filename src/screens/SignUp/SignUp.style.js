@@ -22,6 +22,7 @@ export default styles = StyleSheet.create({
     },
     text: {
         fontSize: 25,
-        marginBottom: 50
+        marginBottom: 50,
+        textAlign: 'center'
     }
 })

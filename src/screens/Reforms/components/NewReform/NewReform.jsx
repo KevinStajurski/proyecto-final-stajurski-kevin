@@ -74,7 +74,9 @@ const NewReform = () => {
             setModalVisible(true)
             return
         }
-        triggerPost({ reformDescription, reformImage, user, location })
+        let date = new Date()
+        date = date.toUTCString()
+        triggerPost({ reformDescription, reformImage, user, location, date })
         setReformDescription('')
         setReformImage(null)
         setLocation({ latitude: '', longitude: '' })
