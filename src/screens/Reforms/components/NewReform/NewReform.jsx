@@ -12,12 +12,10 @@ const NewReform = () => {
     const [reformImage, setReformImage] = useState(null)
     const [reformDescription, setReformDescription] = useState('')
     const [location, setLocation] = useState({ latitude: '', longitude: '' })
-    const [error, setError] = useState('')
+    const [errorText, setErrorText] = useState('')
     const [triggerPost] = usePostReformMutation()
     const { user } = useSelector(state => state.auth)
     const [modalVisible, setModalVisible] = useState(false)
-
-
 
     //Permiso de camara
     const verifyCameraPermissions = async () => {
@@ -48,7 +46,8 @@ const NewReform = () => {
     const getLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync()
         if (status !== 'granted') {
-            setError('El permiso para la localización fue denegado')
+            setErrorText('El permiso para la localización fue denegado')
+            setModalVisible(true)
             return
         }
         let location = await Location.getCurrentPositionAsync({})
@@ -60,16 +59,32 @@ const NewReform = () => {
 
     //Confirmar (sube los datos a firebase)
     const confirmReform = () => {
+        if (reformDescription.length == 0) {
+            setErrorText('Debe ingresar una descripción de la reforma.')
+            setModalVisible(true)
+            return
+        }
+        if (reformImage == null) {
+            setErrorText('Debe agregar una foto de la reforma.')
+            setModalVisible(true)
+            return
+        }
+        if (location.latitude == '') {
+            setErrorText('Debe obtener las coordenadas.')
+            setModalVisible(true)
+            return
+        }
         triggerPost({ reformDescription, reformImage, user, location })
         setReformDescription('')
         setReformImage(null)
         setLocation({ latitude: '', longitude: '' })
+        setErrorText('Reforma enviada con exito!')
         setModalVisible(true)
     }
 
     return (
         <View style={styles.container}>
-            <MyModal text={'Reforma subida con exito!'} modalVisible={modalVisible} setModalVisible={setModalVisible} buttonText={'OK'} />
+            <MyModal text={errorText} modalVisible={modalVisible} setModalVisible={setModalVisible} buttonText={'OK'} />
             <Text style={styles.text}>Agregar reforma / ampliación</Text>
             <TextInput style={styles.textInput} placeholder='Descripción' value={reformDescription} onChangeText={value => setReformDescription(value)} />
             {reformImage && <Image source={{ uri: reformImage }} style={styles.image} />}
