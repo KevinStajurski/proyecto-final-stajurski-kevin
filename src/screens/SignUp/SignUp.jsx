@@ -5,6 +5,7 @@ import { useSignUpMutation } from '../../services/authApi'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../features/auth/authSlice'
 import { usePostProfileMutation } from '../../services/profilesApi'
+import MyModal from '../../components/MyModal/MyModal'
 
 const SignUp = ({ navigation }) => {
     const [names, setNames] = useState('')
@@ -16,9 +17,21 @@ const SignUp = ({ navigation }) => {
     const [triggerSignUp] = useSignUpMutation()
     const dispatch = useDispatch()
     const [triggerPost] = usePostProfileMutation()
+    const [modalVisible, setModalVisible] = useState(false)
+    const [errorText, setErrorText] = useState('')
 
 
     const onSubmit = () => {
+        if (password!=confirmPassword) {
+            setModalVisible(true)
+            setErrorText('La confirmación de clave no coincide')
+            return
+        }
+        if (names.length == 0 || lastName.length == 0 || technicianNumber.length == 0 || email.length == 0 || password.length == 0) {
+            setModalVisible(true)
+            setErrorText('Todos los campos son obligatorios')
+            return
+        }
         triggerSignUp({ email, password })
             .unwrap()
             .then(result => {
@@ -26,10 +39,15 @@ const SignUp = ({ navigation }) => {
                 dispatch(setUser(result))
                 triggerPost({ names, lastName, technicianNumber, email, password, localId })
             })
+            .catch(objet => {
+                setErrorText(objet.data.error.message)
+                setModalVisible(true)
+            })
     }
 
     return (
         <View>
+            <MyModal modalVisible={modalVisible} setModalVisible={setModalVisible} text={errorText} buttonText={'OK'} />
             <View style={styles.container}>
                 <TextInput style={styles.input} placeholder='Nombre' value={names} onChangeText={setNames} />
                 <TextInput style={styles.input} placeholder='Apellido' value={lastName} onChangeText={setLastName} />
